@@ -1,12 +1,20 @@
 import { expect, it } from "vitest";
 import { Equal, Expect } from "../helpers/type-utils";
 
-const returnBothOfWhatIPassIn = (params: { a: unknown; b: unknown }) => {
+// const returnBothOfWhatIPassIn = <A extends { a: any, b: any}>(params: A) => {
+//   return {
+//     first: params.a,
+//     second: params.b,
+//   };
+// };
+
+const returnBothOfWhatIPassIn = <A, B>(params: { a: A, b: B }) => {
   return {
     first: params.a,
-    second: params.b,
-  };
-};
+    second: params.b
+  }
+}
+
 
 it("Should return an object where a -> first and b -> second", () => {
   const result = returnBothOfWhatIPassIn({
